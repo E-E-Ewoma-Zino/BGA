@@ -43,7 +43,7 @@ exports.validate_add_admin = (req, res, next) => {
 			password: Joi.string()
 			.regex(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/)
 			.min(8).required(),
-			role: Joi.string().valid("ADMINISTRATOR", "MENU_SPECIALIST").required(),
+			role: Joi.string().valid("ADMINISTRATOR").required(),
 			phone: Joi.string().required()
 		});
 
@@ -73,7 +73,7 @@ exports.validate_update_admin = (req, res, next) => {
 				firstname: Joi.string(),
 				lastname: Joi.string(),
 			}),
-			role: Joi.string().valid("ADMINISTRATOR", "MENU_SPECIALIST"),
+			role: Joi.string().valid("ADMINISTRATOR"),
 			phone: Joi.string(),
 			_id: Joi.string().alphanum().required()
 		});
