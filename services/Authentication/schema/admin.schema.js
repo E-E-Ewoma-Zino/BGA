@@ -12,8 +12,8 @@ const adminSchema = new mongoose.Schema({
 	},
 	role: {
 		type: String,
-		enum: ["ADMINISTRATOR", "MENU_SPECIALIST"],
-		default: "MENU_SPECIALIST"
+		enum: ["ADMINISTRATOR"],
+		default: "ADMINISTRATOR"
 	},
 	clients: [{
 		type: mongoose.Schema.Types.ObjectId,

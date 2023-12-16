@@ -1,7 +1,7 @@
 // Auth authentication routes
 const { validate_register_client, validate_client_login, validate_remove_client, validate_get_client, validate_update_client, validate_get_all_client } = require("../middleware/client.middleware");
 const client = require("../controllers/client.controller");
-const { isAuthorize, isAdmin, isSuperAdmin, isAdministrator } = require("../../../middleware/authorization.middleware");
+const { isAuthorize, isSuperAdmin, isAdministrator } = require("../../../middleware/authorization.middleware");
 
 module.exports = (app) => {
 	// @desc	login a client
@@ -20,7 +20,7 @@ module.exports = (app) => {
 	app.patch("/client/update/:id", isAuthorize, isAdministrator, validate_update_client, client.update_client);
 
 	// @desc	delete a client
-	app.delete("/client/remove/:id", isAuthorize, isAdministrator, validate_remove_client, client.remove_client);
+	app.delete("/client/remove/:id", isAuthorize, isSuperAdmin, validate_remove_client, client.remove_client);
 
 	// @desc	logout
 	app.get("/auth/logout", isAuthorize, client.logout);
