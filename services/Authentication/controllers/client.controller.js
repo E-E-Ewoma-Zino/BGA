@@ -1,6 +1,8 @@
 // 
 const { register_client_factory, get_client_factory, update_client_factory, remove_client_factory, get_all_client_factory, login_client_factory } = require("../factory/client.factory");
+const tokenizerUtilities = require("../../../utilities/tokenizer.utilities");
 const ERROR = require("../../../utilities/error.utilities");
+
 // controller for registering a client
 exports.register_client = async (req, res) => {
 	try {
@@ -68,7 +70,10 @@ exports.logout = async (req, res) => {
 exports.login_client = async (req, res, next) => {
 	try {
 		const client = await login_client_factory(req, res, next);
-		return res.status(200).json({ status: 200, message: "client Loged In", error: null, result: { client_id: client._id, username: client.username } });
+
+		const the_token = tokenizerUtilities(client.username, client._id, client.role);
+
+		return res.status(200).json({ status: 200, message: "client Loged In", error: null, result: { client_id: client._id, username: client.username, token: the_token } });
 	} catch (error) {
 		console.error("login in errror", error);
 		return res.status(ERROR(error).status).json(ERROR(error));

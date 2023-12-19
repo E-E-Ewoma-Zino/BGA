@@ -9,8 +9,9 @@ exports.validate_admin_login = (req, res, next) => {
 		const schema = Joi.object().keys({
 			username: Joi.string().email().required(),
 			password: Joi.string()
-				.regex(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/)
-				.min(8).required()
+			.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
+			.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
+			.required()
 		});
 
 		const { value, error } = schema.validate(req.body);
@@ -41,8 +42,9 @@ exports.validate_add_admin = (req, res, next) => {
 			}),
 			username: Joi.string().email().required(),
 			password: Joi.string()
-			.regex(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/)
-			.min(8).required(),
+			.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
+			.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
+			.required(),
 			role: Joi.string().valid("ADMINISTRATOR").required(),
 			phone: Joi.string().required()
 		});

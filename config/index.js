@@ -10,6 +10,9 @@ const settings = {
 	charityAppKey: process.env.CHARITY_APP_KEY,
 	sendgridKey: process.env.SENDGRID_KEY,
 	sendgridMail: process.env.SENDGRID_SENDER,
+	// token
+	token_secret: process.env.TOKEN_SECRET,
+	refresh_token_secret: process.env.REFRESH_TOKEN_SECRET,
 	// alibaba
 	alibabaKeyID: process.env.ALIBABA_KEY_ID,
 	alibabaBucketName: process.env.ALIBABA_BUCKET_NAME,

@@ -8,8 +8,9 @@ exports.validate_client_login = (req, res, next) => {
 		const schema = Joi.object().keys({
 			username: Joi.string().email().required(),
 			password: Joi.string()
-				.regex(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/)
-				.min(8).required()
+				.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
+				.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
+				.required()
 		});
 
 		const { value, error } = schema.validate(req.body);
@@ -36,8 +37,9 @@ exports.validate_register_client = (req, res, next) => {
 		const schema = Joi.object().keys({
 			username: Joi.string().email().required(),
 			password: Joi.string()
-				.regex(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/)
-				.min(8).required(),
+				.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
+				.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
+				.required(),
 			fullNames: Joi.object().keys({
 				firstname: Joi.string().required(),
 				lastname: Joi.string().required(),
@@ -89,8 +91,8 @@ exports.validate_update_client = (req, res, next) => {
 		const input = {
 			...req.body,
 			_id: req.params.id,
-			role: req.user.role,
-			admin: req.user._id
+			role: req.role,
+			admin: req.user_id
 		}
 
 		const { value, error } = schema.validate(input);
@@ -124,8 +126,8 @@ exports.validate_get_client = (req, res, next) => {
 		const input = {
 			...req.body,
 			_id: req.params.id,
-			role: req.user.role,
-			admin: req.user._id
+			role: req.role,
+			admin: req.user_id
 		}
 
 		const { value, error } = schema.validate(input);
@@ -156,8 +158,8 @@ exports.validate_get_all_client = (req, res, next) => {
 
 		const input = {
 			...req.body,
-			role: req.user.role,
-			admin: req.user._id
+			role: req.role,
+			admin: req.user_id
 		}
 
 		const { value, error } = schema.validate(input);
@@ -190,8 +192,8 @@ exports.validate_remove_client = (req, res, next) => {
 		const input = {
 			...req.body,
 			_id: req.params.id,
-			role: req.user.role,
-			admin: req.user._id
+			role: req.role,
+			admin: req.user_id
 		}
 
 		const { value, error } = schema.validate(input);

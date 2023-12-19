@@ -144,11 +144,18 @@ exports.client_menu_factory = async (data) => {
 		const group = {};
 
 		result.forEach(menu => {
-			if(!menu.parent.isActive) return;
+			if(!menu.parent){
+				if(!group[menu._id]) group[menu._id] = {};
+				group[menu._id].name = menu.name;
+				group[menu._id].url = menu.url;
+				return;
+			}
+			
+			// if(!menu.parent.isActive) return;
 			if (!group[menu.parent._id]) group[menu.parent._id] = { menu: [] };
 			group[menu.parent._id].name = menu.parent.name;
 			group[menu.parent._id].url = menu.parent.url;
-			if(!menu.isActive) return;
+			// if(!menu.isActive) return;
 			group[menu.parent._id].menu.push({ name: menu.name, url: menu.url});
 		});
 
@@ -159,6 +166,7 @@ exports.client_menu_factory = async (data) => {
 			result: group
 		}
 	} catch (error) {
+		console.info("What", error);
 		return ERROR(error);
 	}
 }
