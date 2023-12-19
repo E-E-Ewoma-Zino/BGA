@@ -9,7 +9,14 @@ const settings = {
 	charityAppId: process.env.CHARITY_APP_ID,
 	charityAppKey: process.env.CHARITY_APP_KEY,
 	sendgridKey: process.env.SENDGRID_KEY,
-	sendgridMail: process.env.SENDGRID_SENDER
+	sendgridMail: process.env.SENDGRID_SENDER,
+	// alibaba
+	alibabaKeyID: process.env.ALIBABA_KEY_ID,
+	alibabaBucketName: process.env.ALIBABA_BUCKET_NAME,
+	alibabaRegion: process.env.ALIBABA_BUCKET_REGION,
+	alibabaUrlEndpoint: process.env.ALIBABA_URL_ENDPOINT,
+	alibabaKeySecret: process.env.ALIBABA_KEY_SECRET,
+	alibabaApiVersion: process.env.ALIBABA_API_VERSION,
 }
 
 module.exports = settings;

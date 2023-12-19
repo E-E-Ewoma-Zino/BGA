@@ -43,6 +43,7 @@ exports.validate_register_client = (req, res, next) => {
 				lastname: Joi.string().required(),
 			}),
 			phone: Joi.string().required(),
+			admin: Joi.string().alphanum().required(),
 			organization: Joi.object().keys({
 				name: Joi.string(),
 				website: Joi.string()

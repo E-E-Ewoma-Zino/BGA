@@ -1,5 +1,4 @@
 // 
-const passport = require("passport");
 const ERROR = require("../../../utilities/error.utilities");
 const { add_admin_factory, get_admin_factory, update_admin_factory, remove_admin_factory, get_all_admin_factory, login_admin_factory } = require("../factory/admin.factory");
 

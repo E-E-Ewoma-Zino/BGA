@@ -8,6 +8,7 @@ const passport = require("passport");
 const session = require("express-session");
 const settings = require("../config/index");
 const Authentication = require("../services/Authentication/routes/index.routes");
+const Menus = require("../services/Menus/routes/index.routes");
 
 // Express start up configuration
 module.exports = function () {
@@ -47,6 +48,8 @@ module.exports = function () {
 	Authentication.admin(app);
 	// Client
 	Authentication.client(app);
+	// Menu and Widget
+	Menus(app);
 	// 404 
 	app.get('*', (req, res) => res.status(404).json({status: 404, message: "This route does not exist", error: null, result: ''}));
 
