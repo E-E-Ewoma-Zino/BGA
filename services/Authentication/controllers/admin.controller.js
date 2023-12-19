@@ -70,7 +70,6 @@ exports.login_admin = async (req, res, next) => {
 	try {
 		const admin = await login_admin_factory(req, res, next);
 
-		console.info("controller", admin);
 		const the_token = tokenizerUtilities(admin.username, admin._id, admin.role);
 
 		return res.status(200).json({ status: 200, message: "admin Loged In", error: null, result: { admin_id: admin._id, username: admin.username, token: the_token } });
