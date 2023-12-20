@@ -45,7 +45,7 @@ exports.validate_add_widget = (req, res, next) => {
 				throw {
 					status: 400,
 					deleteLogoMessage,
-					message: "Check your input and try again!",
+					message: "Now working fix!!!!",
 					error,
 					result: value
 				}
