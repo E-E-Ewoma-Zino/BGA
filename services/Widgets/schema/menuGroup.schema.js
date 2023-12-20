@@ -14,9 +14,9 @@ const menuGroupSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "client"
 	},
-	perent: {
+	widget: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "menuGroup"
+		ref: "widget"
 	},
 	subMenu: [{
 		type: mongoose.Schema.Types.ObjectId,

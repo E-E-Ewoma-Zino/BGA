@@ -14,6 +14,10 @@ const menuSchema = new mongoose.Schema({
 	parent: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "menuGroup"
+	},
+	widget: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "widget"
 	}
 }, { timestamps: true });
 

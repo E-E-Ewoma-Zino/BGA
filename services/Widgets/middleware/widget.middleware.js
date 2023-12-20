@@ -24,6 +24,7 @@ exports.validate_add_widget = (req, res, next) => {
 				name: Joi.string().required(),
 				url: Joi.string().required(),
 				isActive: Joi.boolean().required(),
+				internal: Joi.boolean().required(),
 				icon: Joi.object().required(),
 				client: Joi.string().alphanum().required()
 			});
@@ -75,6 +76,7 @@ exports.validate_update_widget = (req, res, next) => {
 				name: Joi.string(),
 				url: Joi.string(),
 				isActive: Joi.boolean(),
+				internal: Joi.boolean(),
 				icon: Joi.object(),
 				_id: Joi.string().alphanum().required()
 			});

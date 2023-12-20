@@ -10,7 +10,7 @@ const session = require("express-session");
 const settings = require("../config/index");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
-const Menus = require("../services/Menus/routes/index.routes");
+const Widgets = require("../services/Widgets/routes/index.routes");
 const Authentication = require("../services/Authentication/routes/index.routes");
 
 // Express start up configuration
@@ -63,7 +63,7 @@ module.exports = function () {
 	// Client
 	Authentication.client(app);
 	// Menu and Widget
-	Menus(app);
+	Widgets(app);
 	// 404 
 	app.get('*', (req, res) => res.status(404).json({ status: 404, message: "This route does not exist", error: null, result: '' }));
 
