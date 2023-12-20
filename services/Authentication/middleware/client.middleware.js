@@ -7,10 +7,7 @@ exports.validate_client_login = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			username: Joi.string().email().required(),
-			password: Joi.string()
-				.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
-				.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
-				.required()
+			password: Joi.string().required()
 		});
 
 		const { value, error } = schema.validate(req.body);
@@ -36,10 +33,7 @@ exports.validate_register_client = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			username: Joi.string().email().required(),
-			password: Joi.string()
-				.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/)
-				.message('Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.')
-				.required(),
+			password: Joi.string().required(),
 			fullNames: Joi.object().keys({
 				firstname: Joi.string().required(),
 				lastname: Joi.string().required(),
