@@ -22,7 +22,7 @@ exports.validate_add_widget = (req, res, next) => {
 
 			const schema = Joi.object().keys({
 				name: Joi.string().required(),
-				url: Joi.string().required(),
+				url: Joi.string(),
 				isActive: Joi.boolean().required(),
 				internal: Joi.boolean().required(),
 				icon: Joi.object().required(),
@@ -116,11 +116,13 @@ exports.validate_update_widget = (req, res, next) => {
 exports.validate_get_widget = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {
 			...req.body,
+			client: req.query.client,
 			_id: req.params.id
 		}
 
@@ -176,7 +178,8 @@ exports.validate_get_all_widget = (req, res, next) => {
 exports.validate_remove_widget = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {

@@ -9,8 +9,8 @@ exports.validate_add_menu_group = (req, res, next) => {
 			name: Joi.string().required(),
 			url: Joi.string(),
 			isActive: Joi.boolean().required(),
-			subMenu: Joi.string().alphanum(),
-			client: Joi.string().alphanum().required()
+			client: Joi.string().alphanum().required(),
+			widget: Joi.string().alphanum().required()
 		});
 
 		const { value, error } = schema.validate(req.body);
@@ -38,8 +38,7 @@ exports.validate_update_menu_group = (req, res, next) => {
 			name: Joi.string(),
 			url: Joi.string(),
 			isActive: Joi.boolean(),
-			method: Joi.string().valid("add", "remove"),
-			subMenu: Joi.string().alphanum(),
+			widget: Joi.string().alphanum().required(),
 			_id: Joi.string().alphanum().required()
 		});
 
@@ -70,11 +69,15 @@ exports.validate_update_menu_group = (req, res, next) => {
 exports.validate_get_menu_group = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required(),
+			widget: Joi.string().alphanum().required()
 		});
 
 		const input = {
 			...req.body,
+			client: req.query.client,
+			widget: req.query.widget,
 			_id: req.params.id
 		}
 
@@ -100,11 +103,13 @@ exports.validate_get_menu_group = (req, res, next) => {
 exports.validate_get_all_menu_group = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			client: Joi.string().alphanum().required()
+			client: Joi.string().alphanum().required(),
+			widget: Joi.string().alphanum().required()
 		});
 
 		const input = {
 			...req.body,
+			widget: req.query.widget,
 			client: req.params.id
 		}
 
@@ -130,7 +135,8 @@ exports.validate_get_all_menu_group = (req, res, next) => {
 exports.validate_remove_menu_group = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {

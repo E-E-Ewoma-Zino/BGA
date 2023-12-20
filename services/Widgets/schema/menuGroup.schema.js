@@ -17,11 +17,7 @@ const menuGroupSchema = new mongoose.Schema({
 	widget: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "widget"
-	},
-	subMenu: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "menu"
-	}]
+	}
 }, { timestamps: true });
 
 module.exports = mongoose.model("menuGroup", menuGroupSchema);

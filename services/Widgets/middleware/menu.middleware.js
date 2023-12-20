@@ -69,7 +69,8 @@ exports.validate_update_menu = (req, res, next) => {
 exports.validate_get_menu = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {
@@ -129,7 +130,8 @@ exports.validate_get_all_menu = (req, res, next) => {
 exports.validate_remove_menu = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			_id: Joi.string().alphanum().required()
+			_id: Joi.string().alphanum().required(),
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {
