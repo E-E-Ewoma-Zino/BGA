@@ -10,7 +10,7 @@ exports.validate_add_menu_group = (req, res, next) => {
 			url: Joi.string(),
 			isActive: Joi.boolean().required(),
 			client: Joi.string().alphanum().required(),
-			widget: Joi.string().alphanum().required()
+			widget: Joi.string().alphanum()
 		});
 
 		const { value, error } = schema.validate(req.body);
@@ -70,14 +70,12 @@ exports.validate_get_menu_group = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			_id: Joi.string().alphanum().required(),
-			client: Joi.string().alphanum().required(),
-			widget: Joi.string().alphanum().required()
+			client: Joi.string().alphanum().required()
 		});
 
 		const input = {
 			...req.body,
 			client: req.query.client,
-			widget: req.query.widget,
 			_id: req.params.id
 		}
 
@@ -104,12 +102,12 @@ exports.validate_get_all_menu_group = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			client: Joi.string().alphanum().required(),
-			widget: Joi.string().alphanum().required()
+			widget: Joi.string().alphanum()
 		});
 
 		const input = {
 			...req.body,
-			widget: req.query.widget,
+			...req.query,
 			client: req.params.id
 		}
 

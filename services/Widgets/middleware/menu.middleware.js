@@ -100,11 +100,14 @@ exports.validate_get_menu = (req, res, next) => {
 exports.validate_get_all_menu = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
-			client: Joi.string().alphanum().required()
+			client: Joi.string().alphanum().required(),
+			widget: Joi.string().alphanum(),
+			parent: Joi.string().alphanum()
 		});
 
 		const input = {
 			...req.body,
+			...req.query,
 			client: req.params.id
 		}
 

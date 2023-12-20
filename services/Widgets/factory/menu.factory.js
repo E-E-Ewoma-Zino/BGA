@@ -160,8 +160,8 @@ exports.client_menu_factory = async (data) => {
 		});
 
 		return {
-			status: 201,
-			message: "Client menu " + group.length,
+			status: 200,
+			message: "Client menu " + Object.keys(group).length,
 			error: null,
 			result: group
 		}
