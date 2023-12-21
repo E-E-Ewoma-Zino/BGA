@@ -10,18 +10,12 @@ const tokenizerHelper = require("../utilities/tokenizer.utilities");
 // }
 
 exports.isAdministrator = (req, res, next) => {
-	console.info("is ADmi", req.role);
-	console.info("is Super Admin", req.user_id);
-	console.info("is Super Admin", req.username);
 	if (req.role === "ADMINISTRATOR" || req.role === "SUPER_ADMIN") return next();
 
 	return res.status(403).json({ status: 403, message: "You are not allowed to access this route", error: "FORBIDDEN", result: null });
 }
 
 exports.isSuperAdmin = (req, res, next) => {
-	console.info("is Super Admin", req.role);
-	console.info("is Super Admin", req.user_id);
-	console.info("is Super Admin", req.username);
 	if (req.role === "SUPER_ADMIN") return next();
 
 	return res.status(403).json({ status: 403, message: "You are not allowed to access this route", error: "FORBIDDEN", result: null });
