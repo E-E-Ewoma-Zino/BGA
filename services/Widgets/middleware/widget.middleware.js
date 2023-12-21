@@ -117,7 +117,7 @@ exports.validate_get_widget = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			_id: Joi.string().alphanum().required(),
-			client: Joi.string().alphanum().required()
+			client: Joi.string().alphanum()
 		});
 
 		const input = {

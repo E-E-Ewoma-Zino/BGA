@@ -106,7 +106,6 @@ exports.validate_get_all_menu = (req, res, next) => {
 		});
 
 		const input = {
-			...req.body,
 			...req.query,
 			client: req.params.id
 		}
