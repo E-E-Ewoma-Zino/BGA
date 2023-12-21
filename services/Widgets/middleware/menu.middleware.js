@@ -7,7 +7,7 @@ exports.validate_add_menu = (req, res, next) => {
 	try {
 		const schema = Joi.object().keys({
 			name: Joi.string().required(),
-			url: Joi.string().required(),
+			url: Joi.string().uri().required(),
 			isActive: Joi.boolean().required(),
 			client: Joi.string().alphanum().required(),
 			parent: Joi.string().alphanum()

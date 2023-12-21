@@ -8,10 +8,10 @@ module.exports = (app) => {
 	app.post("/widget/add", isAuthorize, isAdministrator, validate_add_widget, widget.add_widget);
 	
 	// @desc	get a widget's current information by id
-	app.get("/widget/get/all/:id", isAuthorize, isAdministrator, validate_get_all_widget, widget.get_all_widget);
+	app.get("/widget/get/all/:id", isAuthorize, validate_get_all_widget, widget.get_all_widget);
 
 	// @desc	get a widget's current information by id
-	app.get("/widget/get/:id", isAuthorize, isAdministrator, validate_get_widget, widget.get_widget);
+	app.get("/widget/get/:id", isAuthorize, validate_get_widget, widget.get_widget);
 
 	// @desc	update a widget's current imformation
 	app.patch("/widget/update/:id", isAuthorize, isAdministrator, validate_update_widget, widget.update_widget);

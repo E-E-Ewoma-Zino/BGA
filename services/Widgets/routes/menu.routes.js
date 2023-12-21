@@ -5,7 +5,7 @@ const menu = require("../controllers/menu.controller");
 
 module.exports = (app) => {
 	// @desc	add in the menu information
-	app.get("/menu/client/:id", validate_get_all_menu, menu.client_menu);
+	app.get("/menu/client/:id", isAuthorize, validate_get_all_menu, menu.client_menu);
 
 	// @desc	add in the menu information
 	app.post("/menu/add", isAuthorize, isAdministrator, validate_add_menu, menu.add_menu);
