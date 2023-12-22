@@ -73,7 +73,7 @@ exports.login_client = async (req, res, next) => {
 
 		const the_token = tokenizerUtilities(client.username, client._id, client.role);
 
-		return res.status(200).json({ status: 200, message: "client Loged In", error: null, result: { client_id: client._id, username: client.username, token: the_token } });
+		return res.status(200).json({ status: 200, message: "client Loged In", error: null, result: { client_id: client._id, username: client.username, firstname: client.fullNames.firstname, lastname: client.fullNames.lastname, token: the_token } });
 	} catch (error) {
 		console.error("login in errror", error);
 		return res.status(ERROR(error).status).json(ERROR(error));
