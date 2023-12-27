@@ -10,6 +10,7 @@ exports.validate_add_menu = (req, res, next) => {
 			url: Joi.string().uri().required(),
 			isActive: Joi.boolean().required(),
 			client: Joi.string().alphanum().required(),
+			widget: Joi.string().alphanum(),
 			parent: Joi.string().alphanum()
 		});
 
@@ -39,6 +40,7 @@ exports.validate_update_menu = (req, res, next) => {
 			url: Joi.string(),
 			isActive: Joi.boolean(),
 			parent: Joi.string().alphanum(),
+			widget: Joi.string().alphanum(),
 			_id: Joi.string().alphanum().required()
 		});
 

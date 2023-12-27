@@ -16,7 +16,7 @@ const widgetSchema = new mongoose.Schema({
 	},
 	internal: Boolean, // If widget is internal, the url property will be empty. But if it is external it will have a url
 	isActive: {
-		type: String,
+		type: Boolean,
 		default: true
 	},
 	client: {
