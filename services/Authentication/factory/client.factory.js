@@ -36,12 +36,12 @@ exports.register_client_factory = async (data) => {
 // Update a new client
 exports.update_client_factory = async (data) => {
 	try {
-		let { _id, admin, role, ...others } = data;
+		let { _id, role, ...others } = data;
 
-		let query = { _id, admin };
-		if (role === SUPER_ADMIN) delete query.admin;
+		// let query = { _id, admin };
+		// if (role === SUPER_ADMIN) delete query.admin;
 
-		const result = await clientDao.update(query, { $set: { ...others } });
+		const result = await clientDao.update({ _id }, { $set: { ...others } });
 
 		if (!result) {
 			throw {
@@ -68,7 +68,7 @@ exports.get_client_factory = async (data) => {
 	try {
 		let { role, ...others } = data;
 
-		if(role === SUPER_ADMIN) delete others.admin;
+		if (role === SUPER_ADMIN) delete others.admin;
 
 		const result = await clientDao.get(others);
 
@@ -98,7 +98,7 @@ exports.get_all_client_factory = async (data) => {
 	try {
 		let { role, ...others } = data;
 
-		if(role === SUPER_ADMIN) delete others.admin;
+		if (role === SUPER_ADMIN) delete others.admin;
 		const result = await clientDao.getAll(others);
 
 		if (!result) {
@@ -126,7 +126,7 @@ exports.remove_client_factory = async (data) => {
 	try {
 		let { role, ...others } = data;
 
-		if(role === SUPER_ADMIN) delete others.admin;
+		if (role === SUPER_ADMIN) delete others.admin;
 
 		const result = await clientDao.remove(others);
 

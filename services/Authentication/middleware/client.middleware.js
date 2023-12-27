@@ -77,16 +77,16 @@ exports.validate_update_client = (req, res, next) => {
 				name: Joi.string(),
 				website: Joi.string()
 			}),
-			role: Joi.string().required(), // this role is used to make sure the user is allowed to edit this route
+			role: Joi.string(), // this role is used to make sure the user is allowed to edit this route
 			_id: Joi.string().alphanum().required(),
-			admin: Joi.string().alphanum().required().error(Error("You are not loged in"))
+			admin: Joi.string().alphanum()
 		});
 
 		const input = {
 			...req.body,
 			_id: req.params.id,
-			role: req.role,
-			admin: req.user_id
+			role: req.role
+			// admin: req.user_id
 		}
 
 		const { value, error } = schema.validate(input);

@@ -11,7 +11,7 @@ class ClientDao {
 
 	// get an client from db
 	async get(data) {
-		return await this.client.findOne(data);
+		return await this.client.findOne(data).populate("admin");
 	}
 
 	// get an client from db

@@ -16,7 +16,7 @@ class MenuGroupDao {
 
 	// get a menu group from db
 	async getAll(data) {
-		return await this.menuGroup.find(data);
+		return await this.menuGroup.find(data).populate("widget");
 	}
 
 	// update the menu group DB
